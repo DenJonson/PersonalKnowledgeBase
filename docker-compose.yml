@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: perwiki-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-wiki}
+      POSTGRES_USER: ${POSTGRES_USER:-wikijs}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-this-password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-wikijs} -d ${POSTGRES_DB:-wiki}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  wiki:
+    image: requarks/wiki:2
+    container_name: perwiki
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WIKI_PORT:-8080}:3000"
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER:-wikijs}
+      DB_PASS: ${POSTGRES_PASSWORD:-change-this-password}
+      DB_NAME: ${POSTGRES_DB:-wiki}
+
+volumes:
+  postgres_data:

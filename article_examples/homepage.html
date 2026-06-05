@@ -1,0 +1,462 @@
+<div class="home-wiki">
+
+    <style>
+        .home-wiki {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 28px;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            color: #1f2937;
+        }
+
+        .home-hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            padding: 48px 42px;
+            margin-bottom: 28px;
+            background:
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.35), transparent 32%),
+                linear-gradient(135deg, #0f172a 0%, #1e3a8a 48%, #2563eb 100%);
+            color: #ffffff;
+            box-shadow: 0 22px 50px rgba(15, 23, 42, 0.28);
+        }
+
+        .home-hero::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            right: -80px;
+            bottom: -100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .home-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+        }
+
+        .home-label {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            font-size: 14px;
+            letter-spacing: 0.02em;
+        }
+
+        .home-hero h1 {
+            margin: 0 0 14px;
+            font-size: 44px;
+            line-height: 1.12;
+            font-weight: 800;
+        }
+
+        .home-hero p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.94;
+        }
+
+        .home-top-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.9fr;
+            gap: 22px;
+            margin-bottom: 30px;
+        }
+
+        .home-panel {
+            border: 1px solid #e5e7eb;
+            border-radius: 24px;
+            background: #ffffff;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        .home-panel h2 {
+            margin: 0 0 16px;
+            font-size: 23px;
+            color: #111827;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .quick-action {
+            display: block;
+            padding: 18px;
+            border-radius: 18px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            text-decoration: none;
+            color: #111827;
+            transition: 0.18s ease;
+        }
+
+        .quick-action:hover {
+            transform: translateY(-2px);
+            border-color: #3b82f6;
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.12);
+        }
+
+        .quick-action .icon {
+            font-size: 26px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .quick-action strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .quick-action span {
+            display: block;
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .note-list {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .note-list li {
+            padding: 13px 15px;
+            border-radius: 15px;
+            background: #f9fafb;
+            border: 1px solid #edf0f3;
+        }
+
+        .note-list a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .note-list a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            margin: 36px 0 18px;
+            font-size: 26px;
+            color: #111827;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 210px;
+            padding: 24px;
+            border-radius: 24px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+        }
+
+        .category-card::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: -42px;
+            top: -42px;
+            border-radius: 50%;
+            background: #dbeafe;
+        }
+
+        .category-card h3 {
+            position: relative;
+            margin: 0 0 10px;
+            font-size: 21px;
+            color: #111827;
+        }
+
+        .category-card p {
+            position: relative;
+            margin: 0 0 18px;
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .category-card ul {
+            position: relative;
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .category-card li {
+            margin-bottom: 7px;
+        }
+
+        .category-card a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .category-card a:hover {
+            text-decoration: underline;
+        }
+
+        .home-dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .dashboard-item {
+            padding: 18px;
+            border-radius: 20px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .dashboard-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 15px;
+            color: #111827;
+        }
+
+        .dashboard-item span {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .home-footer {
+            margin-top: 36px;
+            padding: 22px;
+            border-radius: 22px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            color: #6b7280;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .home-top-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .home-dashboard {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .home-wiki {
+                padding: 16px;
+            }
+
+            .home-hero {
+                padding: 34px 26px;
+                border-radius: 22px;
+            }
+
+            .home-hero h1 {
+                font-size: 32px;
+            }
+
+            .quick-actions,
+            .category-grid,
+            .home-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <section class="home-hero">
+        <div class="home-hero-content">
+            <div class="home-label">Личная база знаний</div>
+            <h1>Домашняя Wiki</h1>
+            <p>
+                Место, где лежат заметки, инструкции, настройки домашнего сервера,
+                полезные ссылки, идеи, проекты и всё то, что не хочется каждый раз
+                вспоминать заново.
+            </p>
+        </div>
+    </section>
+
+    <section class="home-top-grid">
+        <div class="home-panel">
+            <h2>Быстрый доступ</h2>
+
+            <div class="quick-actions">
+                <a class="quick-action" href="/ru/home-server">
+                    <span class="icon">🖥️</span>
+                    <strong>Домашний сервер</strong>
+                    <span>Raspberry Pi, Docker, сервисы, сеть и доступ извне</span>
+                </a>
+
+                <a class="quick-action" href="/ru/instructions">
+                    <span class="icon">🧭</span>
+                    <strong>Инструкции</strong>
+                    <span>Пошаговые заметки: как настроить, запустить и починить</span>
+                </a>
+
+                <a class="quick-action" href="/ru/projects">
+                    <span class="icon">🛠️</span>
+                    <strong>Проекты</strong>
+                    <span>Идеи, текущие задачи, домашние доработки и планы</span>
+                </a>
+
+                <a class="quick-action" href="/ru/bookmarks">
+                    <span class="icon">🔖</span>
+                    <strong>Полезные ссылки</strong>
+                    <span>Сервисы, статьи, документация и материалы на будущее</span>
+                </a>
+            </div>
+        </div>
+
+        <aside class="home-panel">
+            <h2>Недавнее / важное</h2>
+
+            <ul class="note-list">
+                <li><a href="/ru/todo">Список задач</a><br>Что нужно сделать в ближайшее время</li>
+                <li><a href="/ru/notes">Быстрые заметки</a><br>Место для мыслей, черновиков и временных записей</li>
+                <li><a href="/ru/cheatsheets">Шпаргалки</a><br>Команды, настройки и короткие памятки</li>
+                <li><a href="/ru/ideas">Идеи</a><br>То, что может пригодиться позже</li>
+            </ul>
+        </aside>
+    </section>
+
+    <h2 class="section-title">Разделы базы знаний</h2>
+
+    <section class="category-grid">
+
+        <article class="category-card">
+            <h3>Дом и быт</h3>
+            <p>
+                Всё, что связано с квартирой, техникой, ремонтом, освещением,
+                покупками и домашними улучшениями.
+            </p>
+            <ul>
+                <li><a href="/ru/home/lighting">Освещение</a></li>
+                <li><a href="/ru/home/repairs">Ремонт и мелкие работы</a></li>
+                <li><a href="/ru/home/devices">Устройства и техника</a></li>
+            </ul>
+        </article>
+
+        <article class="category-card">
+            <h3>IT и сервер</h3>
+            <p>
+                Настройки Linux, Docker, сетевые заметки, Raspberry Pi,
+                мониторинг и домашние сервисы.
+            </p>
+            <ul>
+                <li><a href="/ru/it/linux">Linux</a></li>
+                <li><a href="/ru/it/docker">Docker</a></li>
+                <li><a href="/ru/it/network">Сеть</a></li>
+                <li><a href="/ru/it/raspberry-pi">Raspberry Pi</a></li>
+            </ul>
+        </article>
+
+        <article class="category-card">
+            <h3>Разработка</h3>
+            <p>
+                Заметки по программированию, архитектуре, инструментам,
+                проектам и полезным техническим решениям.
+            </p>
+            <ul>
+                <li><a href="/ru/dev/cpp">C++</a></li>
+                <li><a href="/ru/dev/qt">Qt</a></li>
+                <li><a href="/ru/dev/tools">Инструменты</a></li>
+                <li><a href="/ru/dev/snippets">Сниппеты</a></li>
+            </ul>
+        </article>
+
+        <article class="category-card">
+            <h3>Документы</h3>
+            <p>
+                Шаблоны, регламенты, методики, личные документы и всё,
+                что удобно хранить в структурированном виде.
+            </p>
+            <ul>
+                <li><a href="/ru/docs/templates">Шаблоны</a></li>
+                <li><a href="/ru/docs/checklists">Чек-листы</a></li>
+                <li><a href="/ru/docs/archive">Архив</a></li>
+            </ul>
+        </article>
+
+        <article class="category-card">
+            <h3>Обучение</h3>
+            <p>
+                Конспекты, курсы, книги, музыка, гитара и другие навыки,
+                которые хочется развивать системно.
+            </p>
+            <ul>
+                <li><a href="/ru/learning/books">Книги</a></li>
+                <li><a href="/ru/learning/courses">Курсы</a></li>
+                <li><a href="/ru/learning/guitar">Гитара</a></li>
+            </ul>
+        </article>
+
+        <article class="category-card">
+            <h3>Личное</h3>
+            <p>
+                Цели, планы, привычки, финансы, списки покупок и прочие
+                личные организационные материалы.
+            </p>
+            <ul>
+                <li><a href="/ru/personal/goals">Цели</a></li>
+                <li><a href="/ru/personal/plans">Планы</a></li>
+                <li><a href="/ru/personal/lists">Списки</a></li>
+            </ul>
+        </article>
+
+    </section>
+
+    <section class="home-dashboard">
+        <div class="dashboard-item">
+            <strong>Сегодня</strong>
+            <span>Проверить задачи и быстрые заметки</span>
+        </div>
+
+        <div class="dashboard-item">
+            <strong>Сервер</strong>
+            <span>Документировать изменения после настройки</span>
+        </div>
+
+        <div class="dashboard-item">
+            <strong>Идеи</strong>
+            <span>Складывать сюда всё, что пока без структуры</span>
+        </div>
+
+        <div class="dashboard-item">
+            <strong>Порядок</strong>
+            <span>Раз в неделю чистить черновики</span>
+        </div>
+    </section>
+
+    <footer class="home-footer">
+        База знаний живёт лучше, когда в неё заносят не идеальные статьи, а полезные заметки.
+    </footer>
+
+</div>

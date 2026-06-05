@@ -1,0 +1,405 @@
+/* ============================================================
+   Wiki.js content theme
+   Светлая тема по умолчанию.
+   Тёмная тема включается только при наличии .theme--dark.
+   ============================================================ */
+
+
+/* ---------- Общие переменные: СВЕТЛАЯ ТЕМА ---------- */
+
+.contents {
+    --wiki-surface: #ffffff;
+    --wiki-surface-soft: #f8fafc;
+    --wiki-surface-muted: #f1f5f9;
+
+    --wiki-text: #1f2937;
+    --wiki-text-muted: #6b7280;
+    --wiki-heading: #111827;
+
+    --wiki-primary: #2563eb;
+    --wiki-primary-hover: #1d4ed8;
+    --wiki-primary-soft: #dbeafe;
+    --wiki-primary-text: #1e40af;
+
+    --wiki-border: #e5e7eb;
+
+    --wiki-code-bg: #eef2ff;
+    --wiki-code-text: #3730a3;
+
+    --wiki-pre-bg: #0f172a;
+    --wiki-pre-text: #e5e7eb;
+
+    --wiki-info-bg: #eff6ff;
+    --wiki-info-border: #bfdbfe;
+    --wiki-info-text: #1e3a8a;
+
+    --wiki-warning-bg: #fffbeb;
+    --wiki-warning-border: #fde68a;
+    --wiki-warning-text: #92400e;
+
+    --wiki-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --wiki-shadow-hover: 0 16px 38px rgba(15, 23, 42, 0.14);
+
+    max-width: 1180px !important;
+    margin: 0 auto !important;
+    padding: 24px !important;
+}
+
+
+/* ---------- ТЁМНАЯ ТЕМА только если Wiki.js реально в dark mode ---------- */
+
+.theme--dark .contents,
+.v-application.theme--dark .contents,
+.application--wrap.theme--dark .contents,
+body.theme--dark .contents {
+    --wiki-surface: #1f2937;
+    --wiki-surface-soft: #273244;
+    --wiki-surface-muted: #172033;
+
+    --wiki-text: #e5e7eb;
+    --wiki-text-muted: #9ca3af;
+    --wiki-heading: #f9fafb;
+
+    --wiki-primary: #60a5fa;
+    --wiki-primary-hover: #93c5fd;
+    --wiki-primary-soft: rgba(96, 165, 250, 0.16);
+    --wiki-primary-text: #bfdbfe;
+
+    --wiki-border: rgba(148, 163, 184, 0.28);
+
+    --wiki-code-bg: rgba(99, 102, 241, 0.18);
+    --wiki-code-text: #c7d2fe;
+
+    --wiki-pre-bg: #020617;
+    --wiki-pre-text: #e5e7eb;
+
+    --wiki-info-bg: rgba(37, 99, 235, 0.16);
+    --wiki-info-border: rgba(96, 165, 250, 0.35);
+    --wiki-info-text: #bfdbfe;
+
+    --wiki-warning-bg: rgba(217, 119, 6, 0.16);
+    --wiki-warning-border: rgba(251, 191, 36, 0.35);
+    --wiki-warning-text: #fde68a;
+
+    --wiki-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    --wiki-shadow-hover: 0 16px 42px rgba(0, 0, 0, 0.34);
+}
+
+
+/* ============================================================
+   Базовое оформление содержимого
+   ============================================================ */
+
+.contents h1,
+.contents h2,
+.contents h3,
+.contents h4 {
+    color: var(--wiki-heading) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.contents h1 {
+    font-size: 42px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 24px !important;
+    padding-bottom: 18px !important;
+    border-bottom: 1px solid var(--wiki-border) !important;
+}
+
+.contents h2 {
+    margin-top: 40px !important;
+    margin-bottom: 18px !important;
+    padding-left: 16px !important;
+    border-left: 5px solid var(--wiki-primary) !important;
+}
+
+.contents h3 {
+    margin-top: 30px !important;
+    margin-bottom: 12px !important;
+}
+
+.contents p,
+.contents li {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    color: var(--wiki-text) !important;
+}
+
+.contents strong {
+    color: var(--wiki-heading) !important;
+}
+
+.contents a {
+    color: var(--wiki-primary) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent !important;
+}
+
+.contents a:hover {
+    color: var(--wiki-primary-hover) !important;
+    border-bottom-color: var(--wiki-primary-hover) !important;
+}
+
+
+/* ---------- Цитаты ---------- */
+
+.contents blockquote {
+    margin: 22px 0 !important;
+    padding: 18px 22px !important;
+    border-left: 5px solid var(--wiki-primary) !important;
+    border-radius: 0 16px 16px 0 !important;
+    background: var(--wiki-info-bg) !important;
+    color: var(--wiki-info-text) !important;
+    border-top: 1px solid var(--wiki-info-border) !important;
+    border-right: 1px solid var(--wiki-info-border) !important;
+    border-bottom: 1px solid var(--wiki-info-border) !important;
+}
+
+.contents blockquote p {
+    color: var(--wiki-info-text) !important;
+}
+
+
+/* ---------- Код ---------- */
+
+.contents code {
+    padding: 0.18em 0.42em !important;
+    border-radius: 7px !important;
+    background: var(--wiki-code-bg) !important;
+    color: var(--wiki-code-text) !important;
+    border: 1px solid var(--wiki-border) !important;
+}
+
+.contents pre {
+    margin: 22px 0 !important;
+    padding: 20px 22px !important;
+    border-radius: 16px !important;
+    background: var(--wiki-pre-bg) !important;
+    color: var(--wiki-pre-text) !important;
+    overflow: auto !important;
+    border: 1px solid var(--wiki-border) !important;
+    box-shadow: var(--wiki-shadow) !important;
+}
+
+.contents pre code {
+    padding: 0 !important;
+    background: transparent !important;
+    color: inherit !important;
+    border: none !important;
+}
+
+
+/* ---------- Таблицы ---------- */
+
+.contents table {
+    width: 100% !important;
+    margin: 24px 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid var(--wiki-border) !important;
+    border-radius: 16px !important;
+    background: var(--wiki-surface) !important;
+    box-shadow: var(--wiki-shadow) !important;
+}
+
+.contents th {
+    background: var(--wiki-surface-soft) !important;
+    color: var(--wiki-heading) !important;
+    font-weight: 800 !important;
+}
+
+.contents th,
+.contents td {
+    padding: 13px 15px !important;
+    border-bottom: 1px solid var(--wiki-border) !important;
+    color: var(--wiki-text) !important;
+}
+
+.contents tbody tr:nth-child(even) {
+    background: var(--wiki-surface-muted) !important;
+}
+
+.contents tbody tr:hover {
+    background: var(--wiki-primary-soft) !important;
+}
+
+
+/* ---------- Картинки ---------- */
+
+.contents img {
+    border-radius: 16px !important;
+    box-shadow: var(--wiki-shadow) !important;
+    border: 1px solid var(--wiki-border) !important;
+}
+
+
+/* ============================================================
+   Компоненты главной страницы
+   ============================================================ */
+
+.contents .wiki-hero {
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 46px 42px !important;
+    margin-bottom: 28px !important;
+    border-radius: 28px !important;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.28), transparent 32%),
+        linear-gradient(135deg, #0f172a 0%, #1e3a8a 48%, #2563eb 100%) !important;
+    color: #ffffff !important;
+    box-shadow: var(--wiki-shadow-hover) !important;
+}
+
+.contents .wiki-hero::after {
+    content: "" !important;
+    position: absolute !important;
+    width: 260px !important;
+    height: 260px !important;
+    right: -90px !important;
+    bottom: -110px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.contents .wiki-hero h1 {
+    position: relative !important;
+    z-index: 1 !important;
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-size: 44px !important;
+}
+
+.contents .wiki-hero p {
+    position: relative !important;
+    z-index: 1 !important;
+    max-width: 760px !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 18px !important;
+}
+
+.contents .wiki-label {
+    position: relative !important;
+    z-index: 1 !important;
+    display: inline-block !important;
+    margin-bottom: 16px !important;
+    padding: 7px 13px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.16) !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+}
+
+.contents .wiki-card-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+    gap: 18px !important;
+    margin: 24px 0 !important;
+}
+
+.contents .wiki-card {
+    display: block !important;
+    padding: 22px !important;
+    border-radius: 22px !important;
+    background: var(--wiki-surface) !important;
+    border: 1px solid var(--wiki-border) !important;
+    box-shadow: var(--wiki-shadow) !important;
+    text-decoration: none !important;
+    color: var(--wiki-text) !important;
+    transition: 0.18s ease !important;
+}
+
+.contents .wiki-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--wiki-shadow-hover) !important;
+    border-color: var(--wiki-primary) !important;
+    text-decoration: none !important;
+}
+
+.contents .wiki-card h3 {
+    margin-top: 10px !important;
+    margin-bottom: 8px !important;
+    color: var(--wiki-heading) !important;
+}
+
+.contents .wiki-card p {
+    margin: 0 !important;
+    color: var(--wiki-text-muted) !important;
+    font-size: 15px !important;
+}
+
+.contents .wiki-badge {
+    display: inline-block !important;
+    padding: 5px 11px !important;
+    border-radius: 999px !important;
+    background: var(--wiki-primary-soft) !important;
+    color: var(--wiki-primary-text) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.contents .wiki-note {
+    padding: 18px 22px !important;
+    margin: 22px 0 !important;
+    border-radius: 16px !important;
+    background: var(--wiki-surface-soft) !important;
+    border: 1px solid var(--wiki-border) !important;
+    color: var(--wiki-text) !important;
+}
+
+.contents .wiki-note.info {
+    background: var(--wiki-info-bg) !important;
+    border-color: var(--wiki-info-border) !important;
+    color: var(--wiki-info-text) !important;
+}
+
+.contents .wiki-note.warning {
+    background: var(--wiki-warning-bg) !important;
+    border-color: var(--wiki-warning-border) !important;
+    color: var(--wiki-warning-text) !important;
+}
+
+.contents .wiki-note strong {
+    color: inherit !important;
+}
+
+
+/* ---------- Мобильная адаптация ---------- */
+
+@media (max-width: 720px) {
+    .contents {
+        padding: 16px !important;
+    }
+
+    .contents h1 {
+        font-size: 32px !important;
+    }
+
+    .contents h2 {
+        font-size: 25px !important;
+    }
+
+    .contents .wiki-hero {
+        padding: 32px 24px !important;
+        border-radius: 22px !important;
+    }
+
+    .contents .wiki-hero h1 {
+        font-size: 32px !important;
+    }
+
+    .contents .wiki-card-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .contents table {
+        display: block !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+    }
+}
